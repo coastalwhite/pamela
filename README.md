@@ -1,4 +1,4 @@
-# PAMOxide
+# Pamela
 
 > Work in progress!
 
