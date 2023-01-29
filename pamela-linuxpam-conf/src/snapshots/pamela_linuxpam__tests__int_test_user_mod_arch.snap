@@ -1,0 +1,56 @@
+---
+source: src/lib.rs
+expression: rules
+---
+[
+    RuleToken {
+        do_log: true,
+        service: "usermod",
+        facility: "auth",
+        content: Entry {
+            control_flag: "sufficient",
+            module_path: "pam_rootok.so",
+            module_arguments: [],
+        },
+    },
+    RuleToken {
+        do_log: true,
+        service: "usermod",
+        facility: "auth",
+        content: Entry {
+            control_flag: "required",
+            module_path: "pam_unix.so",
+            module_arguments: [],
+        },
+    },
+    RuleToken {
+        do_log: true,
+        service: "usermod",
+        facility: "account",
+        content: Entry {
+            control_flag: "required",
+            module_path: "pam_unix.so",
+            module_arguments: [],
+        },
+    },
+    RuleToken {
+        do_log: true,
+        service: "usermod",
+        facility: "session",
+        content: Entry {
+            control_flag: "required",
+            module_path: "pam_unix.so",
+            module_arguments: [],
+        },
+    },
+    RuleToken {
+        do_log: true,
+        service: "usermod",
+        facility: "password",
+        content: Entry {
+            control_flag: "required",
+            module_path: "pam_permit.so",
+            module_arguments: [],
+        },
+    },
+]

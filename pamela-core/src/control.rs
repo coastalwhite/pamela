@@ -348,8 +348,8 @@ mod tests {
 
         assert_test!("incomplete=ignore" => Value::ReturnCode(ReturnCode::Incomplete), Action::Ignore);
         assert_test!("default=bad" => Value::Default, Action::Bad);
-        assert_test!("=xyz" =!> ControlParseError::UnknownValue);
-        assert_test!("default=xyz" =!> ControlParseError::UnknownAction);
+        assert_test!("=xyz" =!> ControlParseError::UnknownValue("".to_string()));
+        assert_test!("default=xyz" =!> ControlParseError::UnknownAction("xyz".to_string()));
     }
 
     #[test]

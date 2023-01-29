@@ -1,0 +1,33 @@
+---
+source: pamela-linuxpam-conf/src/parse.rs
+expression: rules
+---
+[
+    RuleToken {
+        do_log: true,
+        service: "sudo",
+        facility: "auth",
+        content: ServiceInclusion {
+            method: Include,
+            service: "system-auth",
+        },
+    },
+    RuleToken {
+        do_log: true,
+        service: "sudo",
+        facility: "account",
+        content: ServiceInclusion {
+            method: Include,
+            service: "system-auth",
+        },
+    },
+    RuleToken {
+        do_log: true,
+        service: "sudo",
+        facility: "session",
+        content: ServiceInclusion {
+            method: Include,
+            service: "system-auth",
+        },
+    },
+]

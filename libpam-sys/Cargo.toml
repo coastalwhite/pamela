@@ -1,0 +1,20 @@
+[package]
+name = "libpam-sys"
+version = "0.1.0"
+edition = "2021"
+links = "pam"
+build = "build.rs"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+default = ["linux-pam"]
+fail-delay = []
+
+linux-pam = []
+openpam = []
+
+[dependencies]
+
+[build-dependencies]
+pkg-config = "^0.3"

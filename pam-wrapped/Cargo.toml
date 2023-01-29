@@ -1,0 +1,10 @@
+[package]
+name = "pam-wrapped"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+fail-delay = ["libpam-sys/fail-delay"]
+
+[dependencies]
+libpam-sys = { path = "../libpam-sys" }

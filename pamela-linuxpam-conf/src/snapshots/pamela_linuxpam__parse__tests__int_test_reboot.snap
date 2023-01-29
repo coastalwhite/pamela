@@ -1,0 +1,36 @@
+---
+source: pamela-linuxpam-conf/src/parse.rs
+expression: rules
+---
+[
+    RuleToken {
+        do_log: true,
+        service: "reboot",
+        facility: "auth",
+        content: Entry {
+            control_flag: "sufficient",
+            module_path: "pam_rootok.so",
+            module_arguments: [],
+        },
+    },
+    RuleToken {
+        do_log: true,
+        service: "reboot",
+        facility: "auth",
+        content: Entry {
+            control_flag: "required",
+            module_path: "pam_console.so",
+            module_arguments: [],
+        },
+    },
+    RuleToken {
+        do_log: true,
+        service: "reboot",
+        facility: "account",
+        content: Entry {
+            control_flag: "required",
+            module_path: "pam_permit.so",
+            module_arguments: [],
+        },
+    },
+]

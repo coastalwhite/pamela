@@ -1,4 +1,4 @@
-use pamoxide::PamConfig;
+use pamela::PamConfig;
 
 fn main() {
     let config = PamConfig::from_system().expect("Failed to parse pam configuration");

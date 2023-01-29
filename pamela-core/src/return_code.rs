@@ -1,98 +1,97 @@
 // Modeled after Linux-PAM
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
-#[repr(i32)]
 pub enum ReturnCode {
     /// Function completed successfully
-    Success = 0,
+    Success,
 
     /// Failed to dynamically load the service module
-    OpenError = 1,
+    OpenError,
 
     /// Symbol not found in the service module
-    SymbolError = 2,
+    SymbolError,
     
     /// Error in underlying service module
-    ServiceError = 3,
+    ServiceError,
 
     /// System Error
-    SystemError = 4,
+    SystemError,
     
     /// Memory buffer error
-    BufError = 5,
+    BufError,
 
     /// Caller of the library does not have the proper authorization.
-    PermissionDenied = 6,
+    PermissionDenied,
 
     /// Failure to authenticate
-    AuthenticationError = 7,
+    AuthenticationError,
 
     /// Cannot access the authentication data due to insufficient credentials
-    CredentialsInsufficient = 8,
+    CredentialsInsufficient,
 
     /// Authentication service is unable to fetch authentication information
-    AuthInfoUnavailable = 9,
+    AuthInfoUnavailable,
     
     /// User is not known to the authentication module
-    UserUnknown = 10,
+    UserUnknown,
     
     /// An authentication service kept a retry count and the maximum retries has been reached.
-    MaximumTriesReached = 11,
+    MaximumTriesReached,
 
     /// A new authentication token is required. Usually, this is returned when the security
     /// policies require a new password. It is either because it was not set or because it has
     /// aged.
-    NewAuthTokenRequired = 12,
+    NewAuthTokenRequired,
 
     /// User account is expired
-    AccountExpired = 13,
+    AccountExpired,
 
     /// Unable to add or remove an entry for the given session
-    SessionError = 14,
+    SessionError,
     
     /// Given authentication service is unable to fetch user credentials
-    CredentialsUnavailable = 15,
+    CredentialsUnavailable,
 
     /// User credentials have expired
-    CredentialsExpired = 16,
+    CredentialsExpired,
 
     /// Failed to set user credentials
-    CredentialsError = 17,
+    CredentialsError,
 
     /// No module specific data is present
-    NoModuleData = 18,
+    NoModuleData,
 
     /// Conversation Error
-    ConversationError = 19,
+    ConversationError,
 
     /// Failure to manipulate authentication token
-    AuthTokenManipulationError = 20,
+    AuthTokenManipulationError,
 
     /// Failure to recover authentication token
-    AuthTokenRecoverError = 21,
+    AuthTokenRecoverError,
     
     /// Authentication token lock is busy
-    AuthTokenLockBusy = 22,
+    AuthTokenLockBusy,
 
     /// Authentication token aging is disabled
-    AuthTokenDisableAging = 23,
+    AuthTokenDisableAging,
 
-    TryAgain = 24,
-    Ignore = 25,
-    Abort = 26,
+    TryAgain,
+    Ignore,
+    Abort,
 
     /// User's authentication token is expired
-    AuthTokenExpired = 27,
+    AuthTokenExpired,
 
     /// Given module is not known
-    ModuleUnknown = 28,
+    ModuleUnknown,
 
     /// Passed bad item to pam_*_item()
-    BadItem = 29,
+    BadItem,
 
     /// Data is not available yet
-    ConversationAgain = 30,
+    ConversationAgain,
 
     /// Conversation is incomplete
-    Incomplete = 31,
+    Incomplete,
 }

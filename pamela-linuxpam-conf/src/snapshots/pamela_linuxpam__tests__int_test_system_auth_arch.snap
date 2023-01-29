@@ -1,0 +1,200 @@
+---
+source: src/lib.rs
+expression: rules
+---
+[
+    RuleToken {
+        do_log: true,
+        service: "system-auth",
+        facility: "auth",
+        content: Entry {
+            control_flag: "required",
+            module_path: "pam_faillock.so",
+            module_arguments: [
+                "preauth",
+            ],
+        },
+    },
+    RuleToken {
+        do_log: false,
+        service: "system-auth",
+        facility: "auth",
+        content: Entry {
+            control_flag: "success=2 default=ignore",
+            module_path: "pam_systemd_home.so",
+            module_arguments: [],
+        },
+    },
+    RuleToken {
+        do_log: true,
+        service: "system-auth",
+        facility: "auth",
+        content: Entry {
+            control_flag: "success=1 default=bad",
+            module_path: "pam_unix.so",
+            module_arguments: [
+                "try_first_pass",
+                "nullok",
+            ],
+        },
+    },
+    RuleToken {
+        do_log: true,
+        service: "system-auth",
+        facility: "auth",
+        content: Entry {
+            control_flag: "default=die",
+            module_path: "pam_faillock.so",
+            module_arguments: [
+                "authfail",
+            ],
+        },
+    },
+    RuleToken {
+        do_log: true,
+        service: "system-auth",
+        facility: "auth",
+        content: Entry {
+            control_flag: "optional",
+            module_path: "pam_permit.so",
+            module_arguments: [],
+        },
+    },
+    RuleToken {
+        do_log: true,
+        service: "system-auth",
+        facility: "auth",
+        content: Entry {
+            control_flag: "required",
+            module_path: "pam_env.so",
+            module_arguments: [],
+        },
+    },
+    RuleToken {
+        do_log: true,
+        service: "system-auth",
+        facility: "auth",
+        content: Entry {
+            control_flag: "required",
+            module_path: "pam_faillock.so",
+            module_arguments: [
+                "authsucc",
+            ],
+        },
+    },
+    RuleToken {
+        do_log: false,
+        service: "system-auth",
+        facility: "account",
+        content: Entry {
+            control_flag: "success=1 default=ignore",
+            module_path: "pam_systemd_home.so",
+            module_arguments: [],
+        },
+    },
+    RuleToken {
+        do_log: true,
+        service: "system-auth",
+        facility: "account",
+        content: Entry {
+            control_flag: "required",
+            module_path: "pam_unix.so",
+            module_arguments: [],
+        },
+    },
+    RuleToken {
+        do_log: true,
+        service: "system-auth",
+        facility: "account",
+        content: Entry {
+            control_flag: "optional",
+            module_path: "pam_permit.so",
+            module_arguments: [],
+        },
+    },
+    RuleToken {
+        do_log: true,
+        service: "system-auth",
+        facility: "account",
+        content: Entry {
+            control_flag: "required",
+            module_path: "pam_time.so",
+            module_arguments: [],
+        },
+    },
+    RuleToken {
+        do_log: false,
+        service: "system-auth",
+        facility: "password",
+        content: Entry {
+            control_flag: "success=1 default=ignore",
+            module_path: "pam_systemd_home.so",
+            module_arguments: [],
+        },
+    },
+    RuleToken {
+        do_log: true,
+        service: "system-auth",
+        facility: "password",
+        content: Entry {
+            control_flag: "required",
+            module_path: "pam_unix.so",
+            module_arguments: [
+                "try_first_pass",
+                "nullok",
+                "shadow",
+                "sha512",
+            ],
+        },
+    },
+    RuleToken {
+        do_log: true,
+        service: "system-auth",
+        facility: "password",
+        content: Entry {
+            control_flag: "optional",
+            module_path: "pam_permit.so",
+            module_arguments: [],
+        },
+    },
+    RuleToken {
+        do_log: false,
+        service: "system-auth",
+        facility: "session",
+        content: Entry {
+            control_flag: "optional",
+            module_path: "pam_systemd_home.so",
+            module_arguments: [],
+        },
+    },
+    RuleToken {
+        do_log: true,
+        service: "system-auth",
+        facility: "session",
+        content: Entry {
+            control_flag: "required",
+            module_path: "pam_limits.so",
+            module_arguments: [],
+        },
+    },
+    RuleToken {
+        do_log: true,
+        service: "system-auth",
+        facility: "session",
+        content: Entry {
+            control_flag: "required",
+            module_path: "pam_unix.so",
+            module_arguments: [],
+        },
+    },
+    RuleToken {
+        do_log: true,
+        service: "system-auth",
+        facility: "session",
+        content: Entry {
+            control_flag: "optional",
+            module_path: "pam_permit.so",
+            module_arguments: [],
+        },
+    },
+]

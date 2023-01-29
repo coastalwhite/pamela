@@ -1,0 +1,57 @@
+---
+source: pamela-linuxpam-conf/src/lib.rs
+expression: rules
+---
+[
+    Rule {
+        do_log: true,
+        service: Service(
+            "reboot",
+        ),
+        facility: Auth,
+        content: Entry {
+            control_flag: Sufficient,
+            module_path: ModulePath {
+                path_type: Relative,
+                path: "pam_rootok.so",
+            },
+            module_arguments: ModuleArguments(
+                [],
+            ),
+        },
+    },
+    Rule {
+        do_log: true,
+        service: Service(
+            "reboot",
+        ),
+        facility: Auth,
+        content: Entry {
+            control_flag: Required,
+            module_path: ModulePath {
+                path_type: Relative,
+                path: "pam_console.so",
+            },
+            module_arguments: ModuleArguments(
+                [],
+            ),
+        },
+    },
+    Rule {
+        do_log: true,
+        service: Service(
+            "reboot",
+        ),
+        facility: Account,
+        content: Entry {
+            control_flag: Required,
+            module_path: ModulePath {
+                path_type: Relative,
+                path: "pam_permit.so",
+            },
+            module_arguments: ModuleArguments(
+                [],
+            ),
+        },
+    },
+]
